@@ -10,4 +10,7 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
      List<Customer> findByAge(int age);
 
      Customer findByUsernameAndPassword(String username, String password);
+
+     Customer findByUsernameIs(String username);
+     List<Customer> findByAgeGreaterThanEqual(int age);
 }

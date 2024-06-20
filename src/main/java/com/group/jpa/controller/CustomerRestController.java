@@ -20,12 +20,23 @@ public class CustomerRestController {
     public ResponseEntity<?> getByAge(@PathVariable int age){
         List<Customer> cus = repository.findByAge(age);
         return new ResponseEntity<>(cus, HttpStatus.OK);
-
     }
 
     @PostMapping("/customer")
     public ResponseEntity<?> getUsernameAndPassword(@RequestBody Customer customer){
         Customer cus = repository.findByUsernameAndPassword(customer.getUsername(), customer.getPassword());
+        return new ResponseEntity<>(cus, HttpStatus.OK);
+    }
+
+//    @GetMapping("/customer/user/{username}")
+//    public ResponseEntity<?> getUsernameIs(@PathVariable String username){
+//        Customer cus = repository.findByUsernameIs(username);
+//        return new ResponseEntity<>(cus, HttpStatus.OK);
+//    }
+
+    @GetMapping("/customer/user/{age}")
+    public ResponseEntity<?> findByAgerGreaterThanEqual(@PathVariable int age) {
+        List<Customer> cus = repository.findByAgeGreaterThanEqual(age);
         return new ResponseEntity<>(cus, HttpStatus.OK);
     }
 
