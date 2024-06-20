@@ -20,6 +20,11 @@ public class Review {
     @ManyToOne
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
+
+    @ManyToOne
+    @JoinColumn(name = "book_id", nullable = false)
+    private Book book;
+
     private int cost;
     private String content;
     private Date createdAt;
