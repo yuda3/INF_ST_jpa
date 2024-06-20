@@ -1,6 +1,7 @@
 package com.group.jpa.controller;
 
 import com.group.jpa.eneity.Customer;
+import com.group.jpa.repository.CustomerQueryDSLRepository;
 import com.group.jpa.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,6 +15,9 @@ import java.util.List;
 public class CustomerRestController {
 
     @Autowired
+    private CustomerQueryDSLRepository queryDSLRepository;
+
+    @Autowired
     private CustomerRepository repository;
 //
 //    @GetMapping("/customer/{age}")
@@ -24,7 +28,7 @@ public class CustomerRestController {
 
     @PostMapping("/customer")
     public ResponseEntity<?> getUsernameAndPassword(@RequestBody Customer customer){
-        Customer cus = repository.findByUsernameAndPassword(customer.getUsername(), customer.getPassword());
+        Customer cus = queryDSLRepository.getUsernameAndPassword(customer.getUsername(), customer.getPassword());
         return new ResponseEntity<>(cus, HttpStatus.OK);
     }
 
@@ -42,7 +46,7 @@ public class CustomerRestController {
 
     @GetMapping("/customer/{rating}")
     public ResponseEntity<?> getRating(@PathVariable String rating) {
-        List<Customer> clist = repository.getRating(rating);
+        List<Customer> clist = queryDSLRepository.getRating(rating);
         return new ResponseEntity<>(clist, HttpStatus.OK);
     }
 }
