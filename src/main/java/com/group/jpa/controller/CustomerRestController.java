@@ -15,12 +15,12 @@ public class CustomerRestController {
 
     @Autowired
     private CustomerRepository repository;
-
-    @GetMapping("/customer/{age}")
-    public ResponseEntity<?> getByAge(@PathVariable int age){
-        List<Customer> cus = repository.findByAge(age);
-        return new ResponseEntity<>(cus, HttpStatus.OK);
-    }
+//
+//    @GetMapping("/customer/{age}")
+//    public ResponseEntity<?> getByAge(@PathVariable int age){
+//        List<Customer> cus = repository.findByAge(age);
+//        return new ResponseEntity<>(cus, HttpStatus.OK);
+//    }
 
     @PostMapping("/customer")
     public ResponseEntity<?> getUsernameAndPassword(@RequestBody Customer customer){
@@ -40,4 +40,9 @@ public class CustomerRestController {
         return new ResponseEntity<>(cus, HttpStatus.OK);
     }
 
+    @GetMapping("/customer/{rating}")
+    public ResponseEntity<?> getRating(@PathVariable String rating) {
+        List<Customer> clist = repository.getRating(rating);
+        return new ResponseEntity<>(clist, HttpStatus.OK);
+    }
 }
