@@ -24,4 +24,9 @@ public class Book {
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
     private List<Review> reviewList;
 
+    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
+    private List<BookImage> bookImages;
+
+    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
+    private List<Cart> cart;
 }

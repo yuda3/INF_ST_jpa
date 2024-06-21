@@ -17,7 +17,16 @@ spring:
       hibernate:
         format_sql: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     show-sql: true
+logging:
+  file:
+    name: logs/myapp.log
+  level:
+    root: info
+    org.springframework: info
+  logback:
+    rolling policy:
+      max-file-size: 1000000

@@ -28,8 +28,10 @@ public class Customer {
     @Column(columnDefinition = "int default 0")
     private int reserves;
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Review> reviews;
 
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    private List<Cart> carts;
 
 }
